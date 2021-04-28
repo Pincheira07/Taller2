@@ -1,11 +1,18 @@
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Taller02UnitTesting {
     public static void main(String[] args) {
+        iniciarPrograma();
 
-
-
+    }
+    public static void iniciarPrograma(){
+        ArrayList<String> lista = new ArrayList<>();
+        lista = leerArchivo("cadenas.txt");
+        contarLineas(lista);
+        contarPalindromos(analizarPalabras(lista));
 
     }
     public static ArrayList leerArchivo(String ruta){
@@ -35,12 +42,27 @@ public class Taller02UnitTesting {
     }
     public static String formatearPalabra(String palabra){
         palabra = palabra.toLowerCase().replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o")
-                .replace("ú", "u").replace(" ", "").replace(".", "").replace(",", "");
+                .replace("ú", "u").replace(" ", "").replace(".", "").replace(",", "").replace("-","").replace("?","").replace(".","").replace(":","").replace("!","").replace(",","").replace(";","");
         return palabra;
     }
+
     public static void contarLineas(ArrayList arr){
         int numLineas = arr.size();
-        System.out.println(numLineas);
+        System.out.println("Número de lineas: " + numLineas);
+    }
+    public static ArrayList<String> analizarPalabras(ArrayList arr){
+        ArrayList<String> palindromos = new ArrayList<>();
+        for (int i = 0; i < arr.size(); i++) {
+            String palabra = formatearPalabra(arr.get(i).toString());
+            if(esPalindromo(palabra) ==true){
+                palindromos.add(palabra);
+            };
+        }
+        return palindromos;
+    }
+    public static void contarPalindromos(ArrayList arr){
+        int numLineas = arr.size();
+        System.out.println("Número de palindromos: " + numLineas);
     }
 
 

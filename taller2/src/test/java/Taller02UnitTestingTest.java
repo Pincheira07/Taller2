@@ -27,4 +27,19 @@ class Taller02UnitTestingTest {
         assertEquals("lateleletal",formateada);
 
     }
+    @Test
+    public void esPalindromoGuion(){
+        Taller02UnitTesting pruebaPalindromo = new Taller02UnitTesting();
+        boolean esPalindromo = pruebaPalindromo.esPalindromo("123456654321");
+        assertTrue(esPalindromo);
+
+    }
+    @Test
+    public void palindromoNumero(){
+        Taller02UnitTesting pruebaPalindromo = new Taller02UnitTesting();
+        String formateada = pruebaPalindromo.formatearPalabra("123-456-654-321");
+        assertEquals("123456654321",formateada);
+
+    }
+
 }
