@@ -41,5 +41,11 @@ class Taller02UnitTestingTest {
         assertEquals("123456654321",formateada);
 
     }
+    @Test
+    public void palabraVacia(){
+        Taller02UnitTesting pruebaPalindromo = new Taller02UnitTesting();
+        boolean esPalindromo = pruebaPalindromo.esPalindromo("");
+        assertFalse(esPalindromo);
+    }
 
 }

@@ -11,8 +11,10 @@ public class Taller02UnitTesting {
     public static void iniciarPrograma(){
         ArrayList<String> lista = new ArrayList<>();
         lista = leerArchivo("cadenas.txt");
+        System.out.println("---------------------------");
         contarLineas(lista);
         contarPalindromos(analizarPalabras(lista));
+        System.out.println("---------------------------");
 
     }
     public static ArrayList leerArchivo(String ruta){
@@ -29,15 +31,13 @@ public class Taller02UnitTesting {
         }
         return cadenas;
     }
-    public static void imprimirArchivo(ArrayList arr){
-        for (int i = 0; i < arr.size(); i++) {
-            System.out.println(arr.get(i));
-        }
-    }
     public static boolean esPalindromo(String palabra){
-        String cadena = formatearPalabra(palabra);
-        String invertirPalabra = new StringBuilder(palabra).reverse().toString();
-        boolean palindromo = cadena.equals(invertirPalabra);
+        boolean palindromo = false;
+        if (!estaVacio(palabra)){
+            String cadena = formatearPalabra(palabra);
+            String invertirPalabra = new StringBuilder(palabra).reverse().toString();
+            palindromo = cadena.equals(invertirPalabra);
+        }
         return palindromo;
     }
     public static String formatearPalabra(String palabra){
@@ -45,7 +45,6 @@ public class Taller02UnitTesting {
                 .replace("ú", "u").replace(" ", "").replace(".", "").replace(",", "").replace("-","").replace("?","").replace(".","").replace(":","").replace("!","").replace(",","").replace(";","");
         return palabra;
     }
-
     public static void contarLineas(ArrayList arr){
         int numLineas = arr.size();
         System.out.println("Número de lineas: " + numLineas);
@@ -63,6 +62,13 @@ public class Taller02UnitTesting {
     public static void contarPalindromos(ArrayList arr){
         int numLineas = arr.size();
         System.out.println("Número de palindromos: " + numLineas);
+    }
+    public static boolean estaVacio(String palabra){
+        boolean vacio = false;
+        if (palabra==""){
+            vacio = true;
+        }
+        return vacio;
     }
 
 
